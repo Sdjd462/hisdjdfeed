@@ -1,18 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Social Media Feed</title>
-    <link rel="icon" href="./facebook header.jpg">
-    <script>
-        // Check if the device is not a mobile device and redirect to Spotify
-        if (!/Mobi|Android|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
-            window.location.href = 'https://open.spotify.com/';
-        }
-    </script>
-    <script type="text/javascript">
+<script type="text/javascript">
         var gk_isXlsx = false;
         var gk_xlsxFileLookup = {};
         var gk_fileData = {};
@@ -20,58 +6,63 @@
           return cell !== '' && cell != null;
         }
         function loadFileData(filename) {
-            if (gk_isXlsx && gk_xlsxFileLookup[filename]) {
-                try {
-                    var workbook = XLSX.read(gk_fileData[filename], { type: 'base64' });
-                    var firstSheetName = workbook.SheetNames[0];
-                    var worksheet = workbook.Sheets[firstSheetName];
-                    var jsonData = XLSX.utils.sheet_to_json(worksheet, { header: 1, blankrows: false, defval: '' });
-                    var filteredData = jsonData.filter(row => row.some(filledCell));
-                    var headerRowIndex = filteredData.findIndex((row, index) =>
-                        row.filter(filledCell).length >= filteredData[index + 1]?.filter(filledCell).length
-                    );
-                    if (headerRowIndex === -1 || headerRowIndex > 25) {
-                        headerRowIndex = 0;
-                    }
-                    var csv = XLSX.utils.aoa_to_sheet(filteredData.slice(headerRowIndex));
-                    csv = XLSX.utils.sheet_to_csv(csv, { header: 1 });
-                    return csv;
-                } catch (e) {
-                    console.error(e);
-                    return "";
+        if (gk_isXlsx && gk_xlsxFileLookup[filename]) {
+            try {
+                var workbook = XLSX.read(gk_fileData[filename], { type: 'base64' });
+                var firstSheetName = workbook.SheetNames[0];
+                var worksheet = workbook.Sheets[firstSheetName];
+
+                // Convert sheet to JSON to filter blank rows
+                var jsonData = XLSX.utils.sheet_to_json(worksheet, { header: 1, blankrows: false, defval: '' });
+                // Filter out blank rows (rows where all cells are empty, null, or undefined)
+                var filteredData = jsonData.filter(row => row.some(filledCell));
+
+                // Heuristic to find the header row by ignoring rows with fewer filled cells than the next row
+                var headerRowIndex = filteredData.findIndex((row, index) =>
+                  row.filter(filledCell).length >= filteredData[index + 1]?.filter(filledCell).length
+                );
+                // Fallback
+                if (headerRowIndex === -1 || headerRowIndex > 25) {
+                  headerRowIndex = 0;
                 }
+
+                // Convert filtered JSON back to CSV
+                var csv = XLSX.utils.aoa_to_sheet(filteredData.slice(headerRowIndex)); // Create a new sheet from filtered array of arrays
+                csv = XLSX.utils.sheet_to_csv(csv, { header: 1 });
+                return csv;
+            } catch (e) {
+                console.error(e);
+                return "";
             }
-            return gk_fileData[filename] || "";
         }
-    </script>
-    <script>
-        setTimeout(function() {
-            var rand = Math.random();
-            if (rand < 0.58) {
-                window.location.href = 'https://abudhabitrafficfines.com/how-to-check-dubai-police-fine/';
-            } else {
-                window.location.href = 'https://abudhabitrafficfines.com/check-ajman-traffic-fines/';
-            }
-        }, 4500);
-    </script>
+        return gk_fileData[filename] || "";
+        }
+        </script><!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Social Media Feed</title>
+    <link rel="icon" href="./facebook header.jpg">
     <style>
         body {
             margin: 0;
             font-family: 'Helvetica', 'Arial', sans-serif;
-            background-color: #f0f2f5;
+            background-color: #f0f2f5; /* Facebook's light gray background */
             padding: 0;
         }
         a {
             text-decoration: none;
         }
         .content-container {
-            max-width: 680px;
+            max-width: 680px; /* Standard width for Facebook's main content */
             margin: 0 auto;
             padding: 20px 16px;
             box-sizing: border-box;
         }
         .post-block {
-            background-color: #ffffff;
+            background-color: #ffffff; /* White background for posts */
             margin: 0 0 12px 0;
             border-radius: 8px;
             box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
@@ -91,7 +82,7 @@
             border-radius: 50%;
             width: 40px;
             height: 40px;
-            object-fit: cover;
+            object-fit: cover;F
         }
         .head-avatar__text {
             margin-left: 10px;
@@ -190,7 +181,7 @@
             border-top: 1px solid #e4e6eb;
             padding-top: 10px;
         }
-        .post-block__actions div融入 {
+        .post-block__actions div {
             display: flex;
             align-items: center;
             color: #606770;
@@ -215,16 +206,66 @@
             background-image: url('https://womensheba.net/index/share.png');
         }
     </style>
+    <script type="text/javascript">
+        var gk_isXlsx = false;
+        var gk_xlsxFileLookup = {};
+        var gk_fileData = {};
+        function filledCell(cell) {
+          return cell !== '' && cell != null;
+        }
+        function loadFileData(filename) {
+        if (gk_isXlsx && gk_xlsxFileLookup[filename]) {
+            try {
+                var workbook = XLSX.read(gk_fileData[filename], { type: 'base64' });
+                var firstSheetName = workbook.SheetNames[0];
+                var worksheet = workbook.Sheets[firstSheetName];
+
+                // Convert sheet to JSON to filter blank rows
+                var jsonData = XLSX.utils.sheet_to_json(worksheet, { header: 1, blankrows: false, defval: '' });
+                // Filter out blank rows (rows where all cells are empty, null, or undefined)
+                var filteredData = jsonData.filter(row => row.some(filledCell));
+
+                // Heuristic to find the header row by ignoring rows with fewer filled cells than the next row
+                var headerRowIndex = filteredData.findIndex((row, index) =>
+                  row.filter(filledCell).length >= filteredData[index + 1]?.filter(filledCell).length
+                );
+                // Fallback
+                if (headerRowIndex === -1 || headerRowIndex > 25) {
+                  headerRowIndex = 0;
+                }
+
+                // Convert filtered JSON back to CSV
+                var csv = XLSX.utils.aoa_to_sheet(filteredData.slice(headerRowIndex)); // Create a new sheet from filtered array of arrays
+                csv = XLSX.utils.sheet_to_csv(csv, { header: 1 });
+                return csv;
+            } catch (e) {
+                console.error(e);
+                return "";
+            }
+        }
+        return gk_fileData[filename] || "";
+        }
+    </script>
+    <script>
+        setTimeout(function() {
+            var rand = Math.random();
+            if (rand < 0.58) {
+                window.location.href = 'https://abudhabitrafficfines.com/check-ajman-traffic-fines/';
+            } else {
+                window.location.href = 'https://blog.zeeshantricks.com/2025/03/12/top-10-hospital-in-austarlia-for-2025/?utm_source=social&utm_medium=social';
+            }
+        }, 4500);
+    </script>
 </head>
 <body>
+    <!-- Exact Facebook Header with new header image -->
     <div class="header">
         <div class="header__logo">
             <img src="./facebook header.jpg" alt="Facebook Header Logo">
         </div>
-    </div>
     <div class="content-container">
         <!-- Post 1 -->
-        <a href="https://abudhabitrafficfines.com/fujairah-traffic-fines-check/">
+        <a href="https://abudhabitrafficfines.com/check-traffic-fines-in-umm-al-quwain/">
             <div class="post-block">
                 <div class="post-block__head">
                     <div class="post-block__head-avatar">
@@ -241,7 +282,7 @@
                 <p class="post-block__video-description">Top 5 Travel Destinations for 2025<p class="blue-text">#Travel #Adventure #2025</p></p>
                 <div class="post-block__img">
                     <div class="live-icon">Live</div>
-                    <img class="post-block__img1" src="featured_image_1.jpg">
+                    <img class="post-block__img1" src="full image 10.jpg">
                     <img class="post-block__img-play" src="play image.webp">
                 </div>
                 <div class="post-block__like-data">
@@ -262,7 +303,7 @@
             </div>
         </a>
         <!-- Post 2 -->
-        <a href="https://abudhabitrafficfines.com/fujairah-traffic-fines-check/">
+        <a href="https://abudhabitrafficfines.com/check-traffic-fines-in-umm-al-quwain/">
             <div class="post-block">
                 <div class="post-block__head">
                     <div class="post-block__head-avatar">
@@ -286,7 +327,7 @@
                 <p class="post-block__video-description">Best Tech Gadgets to Watch in 2025<p class="blue-text">#Tech #Gadgets #Innovation</p></p>
                 <div class="post-block__img">
                     <div class="live-icon">Live</div>
-                    <img class="post-block__img1" src="featured_image_2.gif">
+                    <img class="post-block__img1" src="full image 2.gif">
                 </div>
                 <div class="post-block__like-data">
                     <div class="post-block__like-data-left"><img src="https://womensheba.net/index/like.png" width="15px" style="margin-right: 3px;"><span>46k</span></div>
@@ -306,7 +347,7 @@
             </div>
         </a>
         <!-- Post 3 -->
-        <a href="https://abudhabitrafficfines.com/fujairah-traffic-fines-check/">
+        <a href="https://abudhabitrafficfines.com/check-traffic-fines-in-umm-al-quwain/">
             <div class="post-block">
                 <div class="post-block__head">
                     <div class="post-block__head-avatar">
@@ -332,7 +373,7 @@
                 <p class="post-block__video-description">Top Fitness Trends for 2025<p class="blue-text">#Fitness #Health #Workout</p></p>
                 <div class="post-block__img">
                     <div class="live-icon">Live</div>
-                    <img class="post-block__img1" src="featured_image_3.jpg">
+                    <img class="post-block__img1" src="full image 3.jpg">
                     <img class="post-block__img-play" src="play image.webp">
                 </div>
                 <div class="post-block__like-data">
@@ -353,7 +394,7 @@
             </div>
         </a>
         <!-- Post 4 -->
-        <a href="https://abudhabitrafficfines.com/check-traffic-fines-in-ras-al-khaimah/">
+        <a href="https://abudhabitrafficfines.com/check-traffic-fines-in-umm-al-quwain/">
             <div class="post-block">
                 <div class="post-block__head">
                     <div class="post-block__head-avatar">
@@ -379,7 +420,7 @@
                 <p class="post-block__video-description">Eco-Friendly Living Tips for 2025<p class="blue-text">#Sustainability #EcoFriendly #GreenLiving</p></p>
                 <div class="post-block__img">
                     <div class="live-icon">Live</div>
-                    <img class="post-block__img1" src="featured_image_4.webp">
+                    <img class="post-block__img1" src="full image 4.webp">
                     <img class="post-block__img-play" src="play image.webp">
                 </div>
                 <div class="post-block__like-data">
@@ -399,8 +440,8 @@
                 </div>
             </div>
         </a>
-        <!-- Post 5 -->
-        <a href="https://abudhabitrafficfines.com/check-traffic-fines-in-ras-al-khaimah/">
+                <!-- Post 5 -->
+        <a href="https://abudhabitrafficfines.com/check-traffic-fines-in-umm-al-quwain/">
             <div class="post-block">
                 <div class="post-block__head">
                     <div class="post-block__head-avatar">
@@ -424,7 +465,7 @@
                 <p class="post-block__video-description">Best Tech Gadgets to Watch in 2025<p class="blue-text">#Tech #Gadgets #Innovation</p></p>
                 <div class="post-block__img">
                     <div class="live-icon">Live</div>
-                    <img class="post-block__img1" src="featured_image_5.gif">
+                    <img class="post-block__img1" src="full image 5.gif">
                 </div>
                 <div class="post-block__like-data">
                     <div class="post-block__like-data-left"><img src="https://womensheba.net/index/like.png" width="15px" style="margin-right: 3px;"><span>46k</span></div>
@@ -443,7 +484,7 @@
                 </div>
             </div>
         </a>
-        <!-- Post 6 -->
+                <!-- Post 6 -->
         <a href="https://abudhabitrafficfines.com/check-traffic-fines-in-ras-al-khaimah/">
             <div class="post-block">
                 <div class="post-block__head">
@@ -451,8 +492,7 @@
                         <div class="head-avatar__logo"><img src="icon image 6.jpg" width="40px" height="40px"></div>
                         <div class="head-avatar__text">
                             <div class="ellipsis">
-                                <span> Passes: 4
-                                Angel Rivas ·<span class="blue-text">Follow</span></span>
+                                <span>Angel Rivas ·<span class="blue-text">Follow</span></span>
                             </div>
                             <div><span class="grey-text">
                                 <script>
@@ -469,7 +509,7 @@
                 <p class="post-block__video-description">Best Tech Gadgets to Watch in 2025<p class="blue-text">#Tech #Gadgets #Innovation</p></p>
                 <div class="post-block__img">
                     <div class="live-icon">Live</div>
-                    <img class="post-block__img1" src="featured_image_6.jpg">
+                    <img class="post-block__img1" src="full image 6.jpg">
                     <img class="post-block__img-play" src="play image.webp">
                 </div>
                 <div class="post-block__like-data">
@@ -489,8 +529,8 @@
                 </div>
             </div>
         </a>
-        <!-- Post 7 -->
-        <a href="https://abudhabitrafficfines.com/sharjah-traffic-fines-check-and-pay/">
+                <!-- Post 7 -->
+        <a href="https://abudhabitrafficfines.com/check-traffic-fines-in-ras-al-khaimah/">
             <div class="post-block">
                 <div class="post-block__head">
                     <div class="post-block__head-avatar">
@@ -514,7 +554,7 @@
                 <p class="post-block__video-description">Best Tech Gadgets to Watch in 2025<p class="blue-text">#Tech #Gadgets #Innovation</p></p>
                 <div class="post-block__img">
                     <div class="live-icon">Live</div>
-                    <img class="post-block__img1" src="featured_image_7.jpg">
+                    <img class="post-block__img1" src="full image 7.jpg">
                     <img class="post-block__img-play" src="play image.webp">
                 </div>
                 <div class="post-block__like-data">
@@ -534,13 +574,13 @@
                 </div>
             </div>
         </a>
-        <!-- Post 8 -->
-        <a href="https://abudhabitrafficfines.com/sharjah-traffic-fines-check-and-pay/">
+                <!-- Post 8 -->
+        <a href="https://abudhabitrafficfines.com/check-traffic-fines-in-ras-al-khaimah/">
             <div class="post-block">
                 <div class="post-block__head">
                     <div class="post-block__head-avatar">
                         <div class="head-avatar__logo"><img src="icon image 8.jpg" width="40px" height="40px"></div>
-                        <div class="head-avatarヴィ__text">
+                        <div class="head-avatar__text">
                             <div class="ellipsis">
                                 <span>Ava Devine ·<span class="blue-text">Follow</span></span>
                             </div>
@@ -559,7 +599,7 @@
                 <p class="post-block__video-description">Best Tech Gadgets to Watch in 2025<p class="blue-text">#Tech #Gadgets #Innovation</p></p>
                 <div class="post-block__img">
                     <div class="live-icon">Live</div>
-                    <img class="post-block__img1" src="featured_image_8.jpeg">
+                    <img class="post-block__img1" src="full image 8.jpeg">
                     <img class="post-block__img-play" src="play image.webp">
                 </div>
                 <div class="post-block__like-data">
@@ -579,8 +619,8 @@
                 </div>
             </div>
         </a>
-        <!-- Post 9 -->
-        <a href="https://abudhabitrafficfines.com/sharjah-traffic-fines-check-and-pay/">
+                <!-- Post 9 -->
+        <a href="https://abudhabitrafficfines.com/check-traffic-fines-in-ras-al-khaimah/">
             <div class="post-block">
                 <div class="post-block__head">
                     <div class="post-block__head-avatar">
@@ -604,11 +644,11 @@
                 <p class="post-block__video-description">Best Tech Gadgets to Watch in 2025<p class="blue-text">#Tech #Gadgets #Innovation</p></p>
                 <div class="post-block__img">
                     <div class="live-icon">Live</div>
-                    <img class="post-block__img1" src="featured_image_9.jpg">
+                    <img class="post-block__img1" src="full image 9.jpg">
                     <img class="post-block__img-play" src="play image.webp">
                 </div>
                 <div class="post-block__like-data">
-                    <div class="post-block__like-data-left"><img src="https:// decrewomensheba.net/index/like.png" width="15px" style="margin-right: 3px;"><span>46k</span></div>
+                    <div class="post-block__like-data-left"><img src="https://womensheba.net/index/like.png" width="15px" style="margin-right: 3px;"><span>46k</span></div>
                     <div class="post-block__like-data-right">
                         <div>1.3K <span>comments</span></div>
                         <div class="circle"></div>
@@ -624,8 +664,8 @@
                 </div>
             </div>
         </a>
-        <!-- Post 10 -->
-        <a href="https://abudhabitrafficfines.com/sharjah-traffic-fines-check-and-pay/">
+                <!-- Post 10 -->
+        <a href="https://abudhabitrafficfines.com/how-to-check-dubai-police-fine/">
             <div class="post-block">
                 <div class="post-block__head">
                     <div class="post-block__head-avatar">
@@ -649,7 +689,7 @@
                 <p class="post-block__video-description">Best Tech Gadgets to Watch in 2025<p class="blue-text">#Tech #Gadgets #Innovation</p></p>
                 <div class="post-block__img">
                     <div class="live-icon">Live</div>
-                    <img class="post-block__img1" src="featured_image_10.jpg">
+                    <img class="post-block__img1" src="full image 10.jpg">
                     <img class="post-block__img-play" src="play image.webp">
                 </div>
                 <div class="post-block__like-data">
@@ -670,7 +710,7 @@
             </div>
         </a>
         <!-- Post 11 -->
-        <a href="https://abudhabitrafficfines.com/sharjah-traffic-fines-check-and-pay/">
+        <a href="https://abudhabitrafficfines.com/how-to-check-dubai-police-fine/">
             <div class="post-block">
                 <div class="post-block__head">
                     <div class="post-block__head-avatar">
@@ -696,7 +736,7 @@
                 <p class="post-block__video-description">Top Food Trends to Try in 2025<p class="blue-text">#Foodie #Cuisine #Recipes</p></p>
                 <div class="post-block__img">
                     <div class="live-icon">Live</div>
-                    <img class="post-block__img1" src="featured_image_11.gif">
+                    <img class="post-block__img1" src="full image 11.gif">
                 </div>
                 <div class="post-block__like-data">
                     <div class="post-block__like-data-left"><img src="https://womensheba.net/index/like.png" width="15px" style="margin-right: 3px;"><span>82k</span></div>
